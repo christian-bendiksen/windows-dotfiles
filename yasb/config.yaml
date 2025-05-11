@@ -1,0 +1,280 @@
+watch_stylesheet: true
+watch_config: true
+debug: false # Enable debug mode to see more logs
+
+# This komorebi setting will be used for tray context menu.
+# If you don't use komorebi, you can remove this section.
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic reload-configuration"
+  
+# This is the main configuration file for Yet Another Status Bar (YASB)
+bars:
+  status-bar:
+    enabled: true
+    #screens: ['DELL P2419H (1)'] # If you want to show on specific screen
+    screens: ['*'] 
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: true
+    blur_effect:
+      enabled: true # Blur effect will be applied to the bar
+      acrylic: false # Acrylic effect will be applied to the bar
+      dark_mode: false # Dark mode will add more shadow to the bar
+      round_corners: false # Default radius from OS
+      border_color: System # None, System or HEX color (this option is related to round_corners=true)
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 35
+    padding:
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+    widgets:
+      left:
+        [
+          "komorebi_workspaces",
+          "komorebi_active_layout",
+          "active_window"
+        ] 
+      center: [
+          "media"
+        ]
+      right:
+        [
+          "memory",
+          "cpu",
+          "battery",
+          "clock"
+        ]
+widgets:
+  
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "Komorebi Offline"
+      label_workspace_btn: "\udb81\udc3d"
+      label_workspace_active_btn: "\udb81\udc3e"
+      label_workspace_populated_btn: "\udb81\udc3d"
+      label_default_name: ""
+      label_zero_index: false
+      hide_empty_workspaces: true
+      hide_if_offline: false
+      animation: true
+      container_padding: 
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8 
+  
+  komorebi_active_layout:
+    type: "komorebi.active_layout.ActiveLayoutWidget"
+    options:
+      hide_if_offline: true
+      label: "{icon}"
+      layouts: ['bsp', 'columns', 'rows', 'grid', 'vertical_stack', 'horizontal_stack', 'ultrawide_vertical_stack','right_main_vertical_stack']
+      layout_icons:
+        bsp: "BSP"
+        columns: "COLS"
+        rows: "ROWS"
+        grid: "GRID"
+        vertical_stack: "V-STACK"
+        horizontal_stack: "H-STACK"
+        ultrawide_vertical_stack: "W-STACK"
+        right_main_vertical_stack: "RMV-STACK"
+        monocle: "MONOCLE"
+        maximised: "MAX"
+        floating: "FLOATING"
+        paused: "PAUSED"
+      callbacks:
+        on_left: 'next_layout'
+        on_middle: 'toggle_monocle'
+        on_right: 'prev_layout'
+      container_padding: 
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  
+  apps:
+    type: "yasb.applications.ApplicationsWidget"
+    options:
+      label: "{data}"
+      app_list:
+        - {icon: "\uf4d4", launch: "explorer"}
+        - {icon: "\uf282", launch: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"}
+        - {icon: "\uf023", launch: "C:\\Program Files\\AmneziaVPN\\AmneziaVPN.exe"}
+        - {icon: "\ue217", launch: "C:\\Users\\user\\AppData\\Roaming\\Telegram Desktop\\Telegram.exe"}
+        - {icon: "\uf1ff", launch: "C:\\Users\\user\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe"}
+      container_padding: 
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8        
+  
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]} "
+      label_alt: ""
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 15
+      max_length: 32
+      max_length_ellipsis: "..."
+      monitor_exclusive: false        
+  
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: '{artist} - {title}'
+      label_alt: '{title}'
+      hide_empty: true
+      callbacks:
+        on_left: 'toggle_label'
+        on_middle: 'do_nothing'
+        on_right: 'do_nothing'
+      max_field_size:
+        label: 42
+        label_alt: 42
+      show_thumbnail: false
+      controls_only: false
+      controls_left: true
+      thumbnail_alpha: 80
+      thumbnail_padding: 0
+      thumbnail_corner_radius: 16
+      icons:
+        prev_track: "\udb81\udcae"
+        next_track: "\udb81\udcad"
+        play: "\udb81\udc0a"
+        pause: "\udb80\udfe4"    
+  
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: 'RAM: {virtual_mem_percent}%'
+      label_alt: 'RAM: {virtual_mem_outof}'
+      update_interval: 5000
+      callbacks:
+        on_left: 'toggle_label'
+        on_middle: 'do_nothing'
+        on_right: 'do_nothing'
+      memory_thresholds:
+        low: 25
+        medium: 50
+        high: 90 
+  
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "CPU: {info[percent][total]}%"
+      label_alt: "CPU: {info[histograms][cpu_percent]}"
+      update_interval: 2000
+      histogram_icons:
+        - '\u2581' # 0%
+        - '\u2581' # 10%
+        - '\u2582' # 20%
+        - '\u2583' # 30%
+        - '\u2584' # 40%
+        - '\u2585' # 50%
+        - '\u2586' # 60%
+        - '\u2587' # 70%
+        - '\u2588' # 80%+
+      histogram_num_columns: 8
+      callbacks:
+        on_right: "exec cmd /c Taskmgr"  
+
+  weather:
+    type: "yasb.weather.WeatherWidget"
+    options:
+      label: "<span>{icon}</span> {temp_c}"
+      label_alt: "{location}: Min {min_temp_c}, Max {max_temp_c}, Humidity {humidity}"
+      api_key: '2ea0fc1f0458441690e131014250805' # Get your free API key from https://www.weatherapi.com/
+      update_interval: 600 # Update interval in seconds, Min 600 seconds
+      hide_decimal: true
+      location: 'Oslo' # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
+      callbacks:
+        on_left: "toggle_label"
+      icons: 
+        sunnyDay: "" # "\ue30d"
+        clearNight: "" # "\ue32b" 
+        cloudyDay: "" # "\udb81\udd99" 
+        cloudyNight: "" # "\ue311"
+        rainyDay: "" # "\udb81\ude7e"
+        rainyNight: "" # "\udb81\ude7e"
+        snowyIcyDay: "" # "\udb81\udd98"
+        snowyIcyNight: "" # "\udb81\udd98"
+        blizzard: "" # "\uebaa"
+        default: "" # "\uebaa"
+        # https://www.weatherapi.com/docs/
+        # Usage {temp_c}, {min_temp_c}, {max_temp_c}, {temp_f}, {min_temp_f}, {max_temp_f}, {location}, {humidity}, {icon}, {conditions}
+
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "{lang[country_code]}"
+      update_interval: 1
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"   
+  
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      volume_icons:
+        - "V"  # Icon for muted
+        - "V"  # Icon for 0-10% volume
+        - "V"  # Icon for 11-30% volume
+        - "V"  # Icon for 31-60% volume
+        - "V"  # Icon for 61-100% volume
+      callbacks:
+        on_right: "exec cmd.exe /c start ms-settings:sound"    
+  
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%d/%m/%y %H:%M}"
+      label_alt: "{%A, %d %B %Y %H:%M}"
+      timezones: ["Europe/Oslo"]    
+  
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: "\uf011"
+      uptime: True
+      blur: true
+      blur_background: True
+      animation_duration: 300 # Milliseconds
+      button_row: 3 # Number of buttons in a row, min 1 max 5
+      buttons:
+        lock: ["\uea75", "Lock"]
+        sleep: ["\u23fe","Sleep"]
+        signout: ["\udb80\udf43", "Sign out"]
+        shutdown: ["\uf011", "Shut Down"]
+        restart: ["\uead2", "Restart"]
+        hibernate: ["\uf28e", "Hibernate"]
+        cancel: ["\udb81\udf3a", "Cancel"]
+
+
+
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span>{percent}%"
+      label_alt: "{icon} {percent}% | time: {time_remaining}"
+      charging_options:
+        icon_format: "{charging_icon}"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]

@@ -1,0 +1,417 @@
+/*
+.widget .label {} -> Global label for all
+.active-window-widget {} -> Styles specific to the active window widget
+.clock-widget {} -> Styles specific to the clock widget
+.cpu-widget {} -> Styles specific to the CPU widget
+.memory-widget {} -> Styles specific to the memory widget
+.weather-widget {} -> Styles specific to the weather widget
+.komorebi-workspaces {} -> Styles specific to komorebi workspaces
+.komorebi-active-layout {} -> Styles specific to komorebi active layout
+.volume-widget {} -> Styles specific to the volume widget 
+.apps-widget {} -> Styles specific to the apps widget
+.power-menu-widget {} -> Styles for the power menu button widget
+.power-menu-popup {} -> Styles for the power menu popup widget
+.power-menu-popup > .button {} -> Styles for power buttons inside the popup 
+.power-menu-popup > .button > .icon,
+.power-menu-popup > .button > .label {} -> Styles for power buttons icons and labels inside the popup 
+.media-widget {} -> Styles specific to the media widget
+.github-widget {} -> Styles specific to the github widget
+.language-widget {} -> Styles specific to the language widget
+.disk-widget {} -> Styles specific to the disk widget
+.taskbar-widget {} -> Styles specific to the taskbar widget
+*/
+* {
+    font-size: 13px;
+    color: #575279;
+    font-weight: 600;
+    font-family: "JetBrainsMono NFP";
+    margin: 5 0;
+    padding: 0;
+}
+.yasb-bar {
+    padding: 0;
+    margin: 0;
+}
+.widget {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #FAF4ED; /* rgba(18, 18, 18, 0.9); */
+    padding: 0 8px;
+    margin: 0 1;
+}
+.widget .label {
+    padding: 0px 2px 0px 2px;
+    
+}
+.widget .label.alt {
+    padding: 0px 2px 0px 2px;
+}
+
+
+/* Workspaces */
+.komorebi-workspaces {
+    border: 1px solid #B4637A;
+    margin-left: 5px;
+    padding: 0px 2px 0px 2px;
+}
+.komorebi-workspaces .widget-container {}
+.komorebi-workspaces .ws-btn {
+    font-size: 16px;
+    margin: 0 3px 0 3px;
+    color: #B4637A;
+    border: none;
+}
+.komorebi-workspaces .ws-btn:hover {
+    color: #8C5162
+}
+.komorebi-workspaces .ws-btn.populated {
+    color: #B4637A;
+}
+.komorebi-workspaces .ws-btn.populated:hover {
+    color: #8C5162;
+}
+.komorebi-workspaces .ws-btn.active {}
+.komorebi-workspaces .ws-btn.button-1 {}
+.komorebi-workspaces .ws-btn.button-2 {}
+.komorebi-workspaces .offline-status {
+    color: #B4637A
+}
+
+
+/* Layout */
+.komorebi-active-layout {
+    border: 1px solid #EA9D34;
+    margin-left: 6px;
+    padding: 0px 2px 0px 2px;
+}
+.komorebi-active-layout .widget-container {}
+.komorebi-active-layout .label {
+    color: #EA9D34
+}
+.komorebi-active-layout .label:hover {
+    color: #B67F33
+}
+
+
+/* Apps */
+.apps-widget {
+    border: 1px solid #D7827E;
+    margin-left: 6px;
+	padding: 0 2px;
+}
+.apps-widget .widget-container {}
+.apps-widget .widget-container .label { 
+    color: #D7827E;
+    font-size: 14px;
+} 
+.apps-widget .widget-container .label:hover { 
+    color: #A76A67;
+    font-size: 14px;
+} 
+
+
+/* Active Windows Title */
+.active-window-widget {
+    border: 1px solid #286983;
+    margin-left: 6px;
+    padding-right: -5px;
+}
+.active-window-widget .widget-container {}
+.active-window-widget .widget-container .label {
+    color: #286983;
+}
+.active-window-widget .widget-container .label:hover {
+    color: #245366;
+}
+.active-window-widget .widget-container .label.alt {}
+.active-window-widget .widget-container .icon {}
+
+
+/* Media */
+.media-widget {
+    border: 1px solid #56949F;
+}
+.media-widget .widget-container {}
+.media-widget .label {
+    color: #56949F
+}
+.media-widget .label:hover {
+    color: #48757D
+}
+.media-widget .label.alt {}
+.media-widget .btn {
+    padding: 0;
+    margin: 0;
+    max-width: 0;
+ }
+.media-widget .btn.disabled {}
+
+
+/* RAM */
+.memory-widget {
+    border: 1px solid #907AA9;
+}
+.memory-widget .widget-container {}
+.memory-widget .label {
+    color: #907AA9
+}
+.memory-widget .label:hover {
+    color: #726384
+}
+.memory-widget .label.alt {}
+.memory-widget .icon {}
+.memory-widget .label.status-low {}
+.memory-widget .label.status-medium {}
+.memory-widget .label.status-high {}
+.memory-widget .label.status-critical {}
+
+
+/* CPU */
+.cpu-widget {
+    margin-left: 6px;
+    border: 1px solid #B4637A;
+}
+.cpu-widget .widget-container {}
+.cpu-widget .widget-container .label {
+    color: #B4637A
+}
+.cpu-widget .widget-container .label:hover {
+    color: #8C5162
+}
+.cpu-widget .widget-container .label.alt {}
+.cpu-widget .widget-container .icon {}
+
+/* Taskbar */
+.taskbar-widget {
+    margin-left: 6px;
+}
+.taskbar-widget .app-icon {}
+
+
+/* Weather */
+.weather-widget {
+    margin-left: 6px;
+    border: 1px solid #EA9D34; 
+}
+.weather-widget .widget-container {}
+.weather-widget .label {
+    color: #EA9D34
+}
+.weather-widget .label:hover {
+    color: #B67F33
+}
+.weather-widget .label.alt {}
+.weather-widget .icon {}
+.weather-widget .icon.cloudyDay {}
+.weather-widget .icon.cloudyNight {} 
+.weather-widget .icon.rainyDay {} 
+.weather-widget .icon.rainyNight {} 
+.weather-widget .icon.snowyIcyDay {} 
+.weather-widget .icon.snowyIcyNight {} 
+.weather-widget .icon.blizzard {} 
+.weather-widget .icon.default {}
+
+
+/* Battery */
+.battery-widget {
+    margin-left: 6px;
+    border: 1px solid #D7827E;
+}
+.battery-widget .widget-container {}
+.battery-widget .label {
+    color: #D7827E
+}
+.battery-widget .label:hover {
+    color: #A76A67
+}
+.battery-widget .label.alt {}
+.battery-widget .icon {}
+
+
+/* Volume */
+.volume-widget {
+    margin-left: 6px;
+    border: 1px solid #286983;
+}
+.volume-widget .widget-container {}
+.volume-widget .label {
+    color: #286983
+}
+.volume-widget .label:hover {
+    color: #245366
+}
+.volume-widget .icon {
+    color: #286983
+}
+.volume-widget .icon:hover {
+    color: #245366
+}
+
+
+/* Clock */
+.clock-widget {
+    margin-left: 6px;
+    margin-right: 5px;
+    border: 1px solid #56949F;
+}
+.clock-widget .widget-container {}
+.clock-widget .widget-container .label {
+    color: #56949F
+}
+.clock-widget .widget-container .label:hover {
+    color: #48757D
+}
+.clock-widget .widget-container .label.alt {}
+.clock-widget .widget-container .icon {}
+
+/* Dark Theme */
+
+/* Workspaces */
+*.dark .widget {
+    background-color: #191724;
+}
+*.dark .komorebi-workspaces {
+    border: 1px solid #EB6F92;
+}
+*.dark .komorebi-workspaces .ws-btn {
+    color: #EB6F92;
+}
+*.dark .komorebi-workspaces .ws-btn:hover {
+    color: #B55C75
+}
+*.dark .komorebi-workspaces .ws-btn.populated {
+    color: #EB6F92;
+}
+*.dark .komorebi-workspaces .ws-btn.populated:hover {
+    color: #B55C75;
+}
+*.dark .komorebi-workspaces .offline-status {
+    color: #EB6F92
+}
+
+
+/* Layout */
+*.dark .komorebi-active-layout {
+    border: 1px solid #F6C177;
+}
+*.dark .komorebi-active-layout .label {
+    color: #F6C177
+}
+*.dark .komorebi-active-layout .label:hover {
+    color: #C19B65
+}
+
+
+/* Apps */
+*.dark .apps-widget {
+    border: 1px solid #EBBCBA;
+}
+*.dark .apps-widget .widget-container .label { 
+    color: #EBBCBA;
+} 
+*.dark .apps-widget .widget-container .label:hover { 
+    color: #B99796;
+} 
+
+/* Active Windows Title */
+*.dark .active-window-widget {
+    border: 1px solid #31748F;
+}
+*.dark .active-window-widget .widget-container .label {
+    color: #31748F;
+}
+*.dark .active-window-widget .widget-container .label:hover {
+    color: #2B5C6F;
+}
+
+
+/* Media */
+*.dark .media-widget {
+    border: 1px solid #9CCFD8;
+}
+*.dark .media-widget .label {
+    color: #9CCFD8
+}
+*.dark .media-widget .label:hover {
+    color: #80A5AB
+}
+
+
+/* RAM */
+*.dark .memory-widget {
+    border: 1px solid #C4A7E7;
+}
+*.dark .memory-widget .label {
+    color: #C4A7E7
+}
+*.dark .memory-widget .label:hover {
+    color: #9C87B5
+}
+
+
+/* CPU */
+*.dark .cpu-widget {
+    border: 1px solid #EB6F92;
+}
+*.dark .cpu-widget .widget-container .label {
+    color: #EB6F92
+}
+*.dark .cpu-widget .widget-container .label:hover {
+    color: #B55C75
+}
+
+
+/* Weather */
+*.dark .weather-widget {
+    border: 1px solid #F6C177; 
+}
+*.dark .weather-widget .label {
+    color: #F6C177
+}
+*.dark .weather-widget .label:hover {
+    color: #C19B65
+}
+
+
+/* Language */
+*.dark .language-widget {
+    border: 1px solid #EBBCBA;
+}
+*.dark .language-widget .label {
+    color: #EBBCBA
+}
+*.dark .language-widget .label:hover {
+    color: #B99796
+}
+
+
+/* Volume */
+*.dark .volume-widget {
+    border: 1px solid #286983;
+}
+*.dark .volume-widget .label {
+    color: #286983
+}
+*.dark .volume-widget .label:hover {
+    color: #2B5C6F
+}
+*.dark .volume-widget .icon {
+    color: #286983
+}
+*.dark .volume-widget .icon:hover {
+    color: #2B5C6F
+}
+
+
+/* Clock */
+*.dark .clock-widget {
+    border: 1px solid #9CCFD8;
+}
+*.dark .clock-widget .widget-container .label {
+    color: #9CCFD8
+}
+*.dark .clock-widget .widget-container .label:hover {
+    color: #80A5AB
+}

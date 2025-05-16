@@ -1,12 +1,14 @@
+
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.36/schema.bar.json",
   "monitor": 0,
-  "font_family": "JetBrains Mono",
+  "font_family": "JetBrains Mono Nerd Font",
   "theme": {
     "palette": "Base16",
-    "name": "atelier-savanna",
+    "name": "RosePine",
     "accent": "Base0D"
   },
+  "transparency_alpha": 50,
   "left_widgets": [
     {
       "Komorebi": {
@@ -19,37 +21,21 @@
         },
         "focused_window": {
           "enable": true,
-          "show_icon": true
-        }
+          "show_icon": true,
+          "max_label_width": 20,
+        },
       }
     }
   ],
   "right_widgets": [
-    {
-      "Update": {
-        "enable": true
-      }
-    },
     {
       "Media": {
         "enable": true
       }
     },
     {
-      "Storage": {
-        "enable": false
-      }
-    },
-    {
-      "Memory": {
-        "enable": false
-      }
-    },
-    {
-      "Network": {
-        "enable": false,
-        "show_total_data_transmitted": false,
-        "show_network_activity": false
+      "Update": {
+        "enable": true
       }
     },
     {
@@ -69,5 +55,5 @@
         "enable": true
       }
     }
-  ]
+  ],
 }

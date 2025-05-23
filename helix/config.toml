@@ -1,17 +1,5 @@
-theme = "rose_pine"
+theme = "rose_pine_transparent"
 
-# [editor]
-# # end-of-line-diagnostics = "hint"
-# [editor.inline-diagnostics]
-# cursor-line = "warning" # show warnings and errors on the cursorline inline
-
-# [editor.indent-guides]
-# render = true
-# character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
-# skip-levels = 0
-
-# [editor.lsp]
-# display-inlay-hints = false
 [editor]
 true-color = true
 #line-number = "relative"

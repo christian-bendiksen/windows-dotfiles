@@ -1,0 +1,4 @@
+# Setting this stops the bug when entering "wsl" the terminal loses focus.
+# You should probably not use this setting if you are using GUI applications.
+[wsl2]
+guiApplications=false
